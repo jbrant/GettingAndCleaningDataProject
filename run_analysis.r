@@ -157,8 +157,27 @@ extractMeanAndStdDevFeatures <- function(featureFilePath) {
   
   ## Extract mean and standard deviation
   meanStdFeatures <- allFeatures[grepl(pattern="mean\\(\\)|std\\(\\)", x=FeatureName),]
+
+  ## Align column names to those in merged dataset and store 
+  ## in new data table variable
+  meanStdFeatures$FeatureCode <- meanStdFeatures[, paste("V", FeatureID, sep="")]
   
+  ## Return mean/standard deviation feature vector
   meanStdFeatures
+}
+
+## Concatenate the merged dataset keys with the feature codes and subset the
+## merged dataset to only include data for mean and standard deviation features
+subsetMergedDataSet <- function() {
+  
+  ## Combine feature code columns with merged data set keys (subject and activity)
+  mergeFeatureColumns <- c(key(mergedDataset), features$FeatureCode)
+  
+  ## Subset the merged dataset using existing feature codes
+  mergedDataset <- mergedDataset[, mergeFeatureColumns, with=FALSE]
+  
+  ## Return subsetted merged dataset
+  mergedDataset
 }
 
 ## Establish top level dataset path
@@ -193,3 +212,6 @@ mergedDataset <- mergeDataSets()
 
 ## Extract mean and standard deviation features
 features <- extractMeanAndStdDevFeatures(featureFilePath=file.path(harDataDir, "features.txt"))
+
+## Subset the merged dataset using on the mean and standard deviation features
+mergedDataset <- subsetMergedDataSet()
