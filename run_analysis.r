@@ -182,8 +182,11 @@ subsetMergedDataSet <- function() {
 
 addActivityNames <- function() {
   
-  ## 
+  ## Set descriptive activity column names
   setnames(activityLabels, names(activityLabels), c("ActivityID", "ActivityName"))
+  
+  ## Merge the activity labels into the dataset column headers
+  
 }
 
 ## Establish top level dataset path
