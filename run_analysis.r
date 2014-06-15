@@ -180,6 +180,12 @@ subsetMergedDataSet <- function() {
   mergedDataset
 }
 
+addActivityNames <- function() {
+  
+  ## 
+  setnames(activityLabels, names(activityLabels), c("ActivityID", "ActivityName"))
+}
+
 ## Establish top level dataset path
 #! Update to dynamically read in directory with data files
 harDataDir <- file.path(getwd(), "UCI HAR Dataset")
