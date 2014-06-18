@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>TidyData Codebook</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>TidyData Codebook</h1>
+
+<h2>Human Activity Recognition Dataset Description</h2>
+
+<p><em>Note: this is taken from the HAR dataset readme.</em></p>
+
+<p>The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. </p>
+
+<p>The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See &#39;features_info.txt&#39; for more details. </p>
+
+<h2>Data Sources</h2>
+
+<p>The Human Activity Recognition Dataset was downloaded from:
+<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a>  </p>
+
+<p>The following data files are utilized for this analysis:</p>
+
+<table><thead>
+<tr>
+<th align="left">Data File</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">features.txt</td>
+<td align="left">Mapping of feature key to feature name.</td>
+</tr>
+<tr>
+<td align="left">activity_labels.txt</td>
+<td align="left">Mapping of activity key to activity description.</td>
+</tr>
+<tr>
+<td align="left">X_train.txt</td>
+<td align="left">Training dataset.</td>
+</tr>
+<tr>
+<td align="left">y_train.txt</td>
+<td align="left">Training activity label IDs.</td>
+</tr>
+<tr>
+<td align="left">X_test.txt</td>
+<td align="left">Test dataset.</td>
+</tr>
+<tr>
+<td align="left">y_test.txt</td>
+<td align="left">Test activity label IDs.</td>
+</tr>
+</tbody></table>
+
+<h2>Feature Variables</h2>
+
+<p>The tidy dataset contains the following variables:</p>
+
+<table><thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">Subject</td>
+<td align="left">ID of subject performing activity.</td>
+</tr>
+<tr>
+<td align="left">ActivityName</td>
+<td align="left">Name of activity being performed.</td>
+</tr>
+<tr>
+<td align="left">fBodyAcc-mean()-X</td>
+<td align="left">Mean frequency of body acceleration for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAcc-mean()-Y</td>
+<td align="left">Mean frequency of body acceleration for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAcc-mean()-Z</td>
+<td align="left">Mean frequency of body acceleration for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAcc-std()-X</td>
+<td align="left">Standard deviation of frequency of body acceleration for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAcc-std()-Y</td>
+<td align="left">Standard deviation of frequency of body acceleration for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAcc-std()-Z</td>
+<td align="left">Standard deviation of frequency of body acceleration for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccJerk-mean()-X</td>
+<td align="left">Mean frequency of body acceleration jerk for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccJerk-mean()-Y</td>
+<td align="left">Mean frequency of body acceleration jerk for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccJerk-mean()-Z</td>
+<td align="left">Mean frequency of body acceleration jerk for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccJerk-std()-X</td>
+<td align="left">Standard deviation of frequency of body acceleration jerk for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccJerk-std()-Y</td>
+<td align="left">Standard deviation of frequency of body acceleration jerk for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccJerk-std()-Z</td>
+<td align="left">Standard deviation of frequency of body acceleration jerk for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccMag-mean()</td>
+<td align="left">Mean frequency of body acceleration magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyAccMag-std()</td>
+<td align="left">Standard deviation of frequency of body acceleration magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyBodyAccJerkMag-mean()</td>
+<td align="left">Mean frequency of body acceleration jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyBodyAccJerkMag-std()</td>
+<td align="left">Standard deviation of frequency of body acceleration jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyBodyGyroJerkMag-mean()</td>
+<td align="left">Mean frequency of body momentum jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyBodyGyroJerkMag-std()</td>
+<td align="left">Standard deviation of body momentum jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyBodyGyroMag-mean()</td>
+<td align="left">Mean frequency of body momentum magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyBodyGyroMag-std()</td>
+<td align="left">Standard deviation of body momentum magnitude.</td>
+</tr>
+<tr>
+<td align="left">fBodyGyro-mean()-X</td>
+<td align="left">Mean frequency of body momentum for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyGyro-mean()-Y</td>
+<td align="left">Mean frequency of body momentum for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyGyro-mean()-Z</td>
+<td align="left">Mean frequency of body momentum for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyGyro-std()-X</td>
+<td align="left">Standard deviation of frequency of body momentum for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyGyro-std()-Y</td>
+<td align="left">Standard deviation of frequency of body momentum for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">fBodyGyro-std()-Z</td>
+<td align="left">Standard deviation of frequency of body momentum for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAcc-mean()-X</td>
+<td align="left">Mean time of body acceleration for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAcc-mean()-Y</td>
+<td align="left">Mean time of body acceleration for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAcc-mean()-Z</td>
+<td align="left">Mean time of body acceleration for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAcc-std()-X</td>
+<td align="left">Standard deviation of time of body acceleration for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAcc-std()-Y</td>
+<td align="left">Standard deviation of time of body acceleration for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAcc-std()-Z</td>
+<td align="left">Standard deviation of time of body acceleration for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerk-mean()-X</td>
+<td align="left">Mean time for body acceleration jerk for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerk-mean()-Y</td>
+<td align="left">Mean time for body acceleration jerk for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerk-mean()-Z</td>
+<td align="left">Mean time for body acceleration jerk for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerk-std()-X</td>
+<td align="left">Standard deviation of time for body acceleration jerk for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerk-std()-Y</td>
+<td align="left">Standard deviation of time for body acceleration jerk for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerk-std()-Z</td>
+<td align="left">Standard deviation of time for body acceleration jerk for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerkMag-mean()</td>
+<td align="left">Mean time for body acceleration jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccJerkMag-std()</td>
+<td align="left">Standard deviation of time for body acceleration jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccMag-mean()</td>
+<td align="left">Mean time for body acceleration magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyAccMag-std()</td>
+<td align="left">Standard deviation of time for body acceleration magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyro-mean()-X</td>
+<td align="left">Mean time for body momentum for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyro-mean()-Y</td>
+<td align="left">Mean time for body momentum for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyro-mean()-Z</td>
+<td align="left">Mean time for body momentum for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyro-std()-X</td>
+<td align="left">Standard deviation of time for body momentum for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyro-std()-Y</td>
+<td align="left">Standard deviation of time for body momentum in Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyro-std()-Z</td>
+<td align="left">Standard deviation of time for body momentum for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerk-mean()-X</td>
+<td align="left">Mean time for body momentum jerk for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerk-mean()-Y</td>
+<td align="left">Mean time for body momentum jerk for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerk-mean()-Z</td>
+<td align="left">Mean time for body momentum jerk for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerk-std()-X</td>
+<td align="left">Standard deviation of time for body momentum jerk for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerk-std()-Y</td>
+<td align="left">Standard deviation of time for body momentum jerk for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerk-std()-Z</td>
+<td align="left">Standard deviation of time for body momentum jerk for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerkMag-mean()</td>
+<td align="left">Mean time for body momentum jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroJerkMag-std()</td>
+<td align="left">Standard deviation of time for body momentum jerk magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroMag-mean()</td>
+<td align="left">Mean time for body momentum magnitude.</td>
+</tr>
+<tr>
+<td align="left">tBodyGyroMag-std()</td>
+<td align="left">Standard deviation of time for body momentum magnitude.</td>
+</tr>
+<tr>
+<td align="left">tGravityAcc-mean()-X</td>
+<td align="left">Mean time for acceleration due to gravity for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tGravityAcc-mean()-Y</td>
+<td align="left">Mean time for acceleration due to gravity for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tGravityAcc-mean()-Z</td>
+<td align="left">Mean time for acceleration due to gravity for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tGravityAcc-std()-X</td>
+<td align="left">Standard deviation of time for acceleration due to gravity for X-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tGravityAcc-std()-Y</td>
+<td align="left">Standard deviation of time for acceleration due to gravity for Y-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tGravityAcc-std()-Z</td>
+<td align="left">Standard deviation of time for acceleration due to gravity for Z-component of direction.</td>
+</tr>
+<tr>
+<td align="left">tGravityAccMag-mean()</td>
+<td align="left">Mean time for acceleration magnitude due to gravity.</td>
+</tr>
+<tr>
+<td align="left">tGravityAccMag-std()</td>
+<td align="left">Standard deviation of time for acceleration magnitude due to gravity.</td>
+</tr>
+</tbody></table>
+
+</body>
+
+</html>
+
