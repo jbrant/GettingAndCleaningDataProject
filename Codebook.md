@@ -2,7 +2,7 @@ TidyData Codebook
 ========================================================
 
 ## Human Activity Recognition Dataset Description
-*Note: this is taken from the HAR dataset readme.*
+*Note: The below two paragraphs are taken from the HAR dataset readme.*
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
@@ -22,6 +22,19 @@ The following data files are utilized for this analysis:
 | y_train.txt         | Training activity label IDs.                     |
 | X_test.txt          | Test dataset.                                    |
 | y_test.txt          | Test activity label IDs.                         |
+
+## Data Labels
+The following is a complete sample of the data labels: subject (simply a numeric vector) and activity.
+
+### Activity Labels
+```R
+data.table(ActivityID = 1:6, ActivityName = c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"))
+```
+
+### Subject Labels
+```R
+c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)
+```
 
 ## Feature Variables
 The tidy dataset contains the following variables (from left to right in the order listed):
@@ -96,3 +109,14 @@ The tidy dataset contains the following variables (from left to right in the ord
 | tGravityAcc-std()-Z         	| Standard deviation of time for acceleration due to gravity for Z-component of direction. 	|
 | tGravityAccMag-mean()       	| Mean time for acceleration magnitude due to gravity.                                     	|
 | tGravityAccMag-std()        	| Standard deviation of time for acceleration magnitude due to gravity.                    	|
+
+## Data Transformations
+*Note: Please reference the ReadMe for a more thorough description of transformations.*
+
+1. The training and test sets are merged.
+2. The feature set is read in and subsetted to include only the mean and standard deviation measures.
+3. The subsetted feature set is in turn used to subset the merged training/test dataset.
+4. The merged training/test dataset and activity dataset are joined on ActivityID in order to add textual activity labels to the dataset.
+5. The dataset is melted to a long, narrow format with one measure per row, the grain of which is at the feature ID level.
+6. The dataset is joined to the feature list by FeatureCode so that the textual feature label can replace the FeatureCode label.
+7. The dataset is dcasted to display a "tiday dataset", with subject and activity on rows, feature name on columns, and the mean of the given datapoint at each intersection.
