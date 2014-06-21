@@ -6,8 +6,8 @@ if (!require("reshape2")) {
   install.packages("reshape2")
 }
 
-require(data.table)
-require(reshape2)
+require(data.table, quietly=TRUE)
+require(reshape2, quietly=TRUE)
 
 file.url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 file.name <- "./UCI HAR Dataset.zip"
